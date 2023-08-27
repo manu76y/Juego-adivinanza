@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    // Configurar la semilla para generar números aleatorios
+    srand(time(0));
+
+    // Generar un número aleatorio entre 1 y 100
+    int numeroSecreto = rand() % 100 + 1;
+    int intento;
+    int intentosRealizados = 0;
+    bool haAdivinado = false;
+
+    cout << "Bienvenido a Adivina el Número!" << endl;
+
+    while (!haAdivinado && intentosRealizados < 7) {
+        cout << "Intento " << intentosRealizados + 1 << ": ";
+        cin >> intento;
+
+        if (intento == numeroSecreto) {
+            haAdivinado = true;
+            cout << "¡Felicidades! ¡Has adivinado el número " << numeroSecreto << " en " << intentosRealizados + 1 << " intentos!" << endl;
+        } else if (intento < numeroSecreto) {
+            cout << "El número es mayor." << endl;
+        } else {
+            cout << "El número es menor." << endl;
+        }
+
+        intentosRealizados++;
+    }
+
+    if (!haAdivinado) {
+        cout << "¡Agotaste tus intentos! El número secreto era: " << numeroSecreto << endl;
+    }
+
+    return 0;
+}
